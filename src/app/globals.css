@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #faf8f3;
+  --paper-raised: #fffefb;
+  --ink: #201c16;
+  --ink-soft: #4d473c;
+  --muted: #837a68;
+  --line: #e4dfd1;
+  --line-strong: #d3ccb9;
+  --accent: #2c4a7c;
+  --accent-soft: #e7edf6;
+  --highlight: #c97d13;
+  --highlight-soft: #f7e9d2;
+  --good: #3f6b4a;
+  --good-soft: #e6efe6;
+  --status-todo: #6d3fa0;
+  --status-todo-soft: #ede4f5;
+  --status-progress: #92720c;
+  --status-progress-soft: #faf1c7;
+  --status-overdue: #b3261e;
+  --status-overdue-soft: #f8e2e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #18160f;
+    --paper-raised: #201d15;
+    --ink: #ece6d6;
+    --ink-soft: #cbc3ac;
+    --muted: #948b74;
+    --line: #37321f;
+    --line-strong: #4a4429;
+    --accent: #8fb0e6;
+    --accent-soft: #253046;
+    --highlight: #eab35f;
+    --highlight-soft: #3a2c14;
+    --good: #8fc79b;
+    --good-soft: #1f2f22;
+    --status-todo: #c4a3e6;
+    --status-todo-soft: #2c2140;
+    --status-progress: #e0c25a;
+    --status-progress-soft: #362b10;
+    --status-overdue: #e68078;
+    --status-overdue-soft: #3a1815;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}

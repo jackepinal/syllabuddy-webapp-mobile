@@ -142,11 +142,26 @@ export type Subscription = {
   current_period_end: string | null;
 };
 
-type TableDef<Row> = {
+// supabase-js resolves every query to `never` unless the schema has the full
+// shape its generated types use (Relationships, Views, Functions, ...), so
+// the unused parts are declared empty. Relationships only need listing for
+// foreign keys that queries embed, like `course:courses(...)`.
+type TableDef<Row, Relationships extends unknown[] = []> = {
   Row: Row;
   Insert: Partial<Row>;
   Update: Partial<Row>;
+  Relationships: Relationships;
 };
+
+type CourseRelationship<Table extends string> = {
+  foreignKeyName: `${Table}_course_id_fkey`;
+  columns: ["course_id"];
+  isOneToOne: false;
+  referencedRelation: "courses";
+  referencedColumns: ["id"];
+};
+
+type Empty = { [_ in never]: never };
 
 export type Database = {
   public: {
@@ -156,10 +171,14 @@ export type Database = {
       courses: TableDef<Course>;
       syllabi: TableDef<Syllabus>;
       grade_categories: TableDef<GradeCategory>;
-      assignments: TableDef<Assignment>;
-      schedule_blocks: TableDef<ScheduleBlock>;
+      assignments: TableDef<Assignment, [CourseRelationship<"assignments">]>;
+      schedule_blocks: TableDef<ScheduleBlock, [CourseRelationship<"schedule_blocks">]>;
       subscriptions: TableDef<Subscription>;
     };
+    Views: Empty;
+    Functions: Empty;
+    Enums: Empty;
+    CompositeTypes: Empty;
   };
 };
 

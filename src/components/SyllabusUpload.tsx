@@ -5,7 +5,7 @@ import { useFormStatus } from "react-dom";
 import { uploadSyllabus } from "@/app/actions/syllabus";
 import { Button } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Input";
-import { MAX_SYLLABUS_URLS } from "@/lib/claude/syllabus-extraction";
+import { MAX_SYLLABUS_URLS } from "@/lib/syllabus-limits";
 
 function SubmitButton() {
   const { pending } = useFormStatus();

@@ -124,7 +124,7 @@ export type SyllabusSource =
   | { kind: "text"; text: string }
   | { kind: "urls"; urls: string[] };
 
-export const MAX_SYLLABUS_URLS = 5;
+export { MAX_SYLLABUS_URLS } from "@/lib/syllabus-limits";
 
 // The web fetch tool the "paste a link" path uses to retrieve a public
 // course page (or a PDF it links to) itself, instead of the student
